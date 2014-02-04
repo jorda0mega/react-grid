@@ -1,0 +1,10 @@
+[
+  {
+    "name": "dummy",
+    "address": "109 summit ave",
+    "phone": "3055591448",
+    "sex":"M",
+    "dob":"09/01/1970",
+    "isSmoker": 1
+  }
+]
