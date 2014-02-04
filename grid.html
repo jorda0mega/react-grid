@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="bower_components/react/react.js"></script>
-    <script src="bower_components/react/JSXTransformer.js"></script>
-  </head>
-  <body>
-    <div id="example"></div>
-    <script type="text/jsx" src="src/grid.js"></script>
-  </body>
+    <head>
+        <script src="bower_components/react/react.js"></script>
+        <script src="bower_components/react/JSXTransformer.js"></script>
+        <script type='text/javascript' id='lt_ws' src='http://localhost:63311/socket.io/lighttable/ws.js'></script>
+    </head>
+    <body>
+        <div id="grid"></div>
+        <script type="text/jsx" src="./build/scripts/bundle.js"></script>
+    </body>
 </html>
