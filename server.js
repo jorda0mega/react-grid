@@ -1,22 +1,39 @@
-var connect = require("connect");
+var express = require("express");
 var mysql = require("mysql");
+var app = express();
 
-var connection = mysql.createConnection({
-  database: "test",
-  host: "localhost",
-  user: "jorda0mega",
-  password: ""
+// app.all("/", function(req, res, next){
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//   res.next();
+// });
+
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//   next();
+// });
+
+app.get("/", function(req, res, next){
+  res.send("hello world");
 });
 
-function getData(){
-  var data = [];
-  connection.query("select * from Persons", function(err, rows){
-    data = rows;
+app.get("/data", function(req, res, next){
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+  var connection = mysql.createConnection({
+    database: "test",
+    host: "localhost",
+    user: "jorda0mega",
+    password: ""
   });
 
-  return data;
-}
+  connection.query("select * from Persons", function(err, rows){
+    res.jsonp(rows);
+  });
+});
 
-connect.createServer(
-	connect.static(__dirname)
-).listen(8080);
+app.use(express.static(__dirname));
+
+app.listen(8080);
